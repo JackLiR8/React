@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类组件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../libs/react@15.4.2.js"></script>
+    <script src="../libs/react-dom@15.4.2.js"></script>
+    <script src="../libs/babel.js"></script>
+    <script type="text/babel">
+
+        // 类组件： 低版本中可以用 React.createClass()定义类组件
+        var NewsComponent = React.createClass({
+            render(){
+                return (<div><h1>{this.props.title}</h1></div>)
+            }
+        })
+        const el =(<div>
+            <NewsComponent title="小说"></NewsComponent>
+            <hr/>
+            <NewsComponent title="电影"></NewsComponent>
+            <hr/>
+        </div>)
+        ReactDOM.render(el,document.getElementById('app'))
+    </script>
+</body>
+</html>

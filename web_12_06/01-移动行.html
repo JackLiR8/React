@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>move-row</title>
     <style>
         .gray {
             background: gray
@@ -16,29 +16,37 @@
 </head>
 <body>
     <div id="app"></div>
-    <script src="./libs/react.development@16.2.js"></script>
-    <script src="./libs/react-dom.development@16.2.js"></script>
-    <script src="./libs/babel.min.js"></script>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.js"></script>
     <script type="text/babel">
+
         var arr = [111,222,333,444]
-        const newArr = (<div>
-            {
-                arr.map((e,index) => {
-                    return (<li key={index} className={index%2 == 0? "gray":"blue"}>
-                        <span>{e}</span>
-                        <button onClick={moveUp}>上移</button>
-                        <button onClick={moveDown}>下移</button>
-                    </li>)
-                })  
-            }  
-        </div>)
-        ReactDOM.render(newArr,document.getElementById('app'))
-        function moveUp(params) {
-            
+        function render() {
+            const newArr = (<div>
+                {
+                    arr.map((e,index) => {
+                        return (<li key={index} className={index%2 == 0? "gray":"blue"}>
+                            <span>{e}</span>
+                            <button onClick={() => moveUp(index)}>上移</button>     {/*事件函数如果需要传参，可以通过箭头函数 （）=> fun(arg)  或者  fun.bind(arg) 进行传参   */}
+                            <button onClick={delData.bind(index)}>delete</button> 
+                        </li>)
+                    })  
+                }  
+            </div>)
+            ReactDOM.render(newArr,document.getElementById('app')) 
+        }
+        render()
+       
+        function moveUp(i) {
+            var ele = arr.splice(i,1)
+            arr.splice(i-1,0,ele[0])
+            render()
         }
 
-        function moveDown(params) {
-            
+        function delData(i) {
+            arr.splice(i,1)
+            render()
         }
     </script>
 </body>
