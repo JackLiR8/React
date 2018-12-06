@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数组件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.js"></script>
+    <script type="text/babel">
+        function NewsBlock(params) {
+            return (<div>
+                <h1>{params.title}</h1>
+                <p>{params.content}</p>
+            </div>)
+        }
+        const el = (<div>
+                <NewsBlock title="小说" content="Tale of Two City"></NewsBlock>
+                <hr/>
+                <NewsBlock title="电影" content="肖申克的救赎"></NewsBlock>
+                <hr/>
+        </div>)
+        ReactDOM.render(el,document.getElementById('app'))
+    </script>
+</body>
+</html>
