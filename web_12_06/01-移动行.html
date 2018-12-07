@@ -28,8 +28,11 @@
                     arr.map((e,index) => {
                         return (<li key={index} className={index%2 == 0? "gray":"blue"}>
                             <span>{e}</span>
-                            <button onClick={() => moveUp(index)}>上移</button>     {/*事件函数如果需要传参，可以通过箭头函数 （）=> fun(arg)  或者  fun.bind(arg) 进行传参   */}
-                            <button onClick={delData.bind(index)}>delete</button> 
+                            <button onClick={() => moveUp(index)}>上移</button>
+                            <button onClick={delData.bind(index)}>delete</button>
+                            
+                            {/*事件函数如果需要传参，可以通过箭头函数 （）=> fun(arg)  或者  fun.bind(arg) 进行传参   */}
+                            
                         </li>)
                     })  
                 }  
