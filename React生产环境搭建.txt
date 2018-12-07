@@ -1,0 +1,24 @@
+1.Node.js安装 
+
+2.淘宝镜像
+
+3.安装React脚手架
+    sudo npm install -g create-react-app 
+
+验证create-react-app是否安装成功：
+在终端输入： create-react-app -V
+
+4.安装yarn （为了提高拉取项目的成功概率）
+    sudo cnpm install yarn -g
+
+    yarn add react (npm install react -S)
+    yarn install (npm install)
+
+
+4.拉取项目
+    新建文件夹，在新建文件夹下打开终端，输入：
+    sudo create-react-app my-project
+
+5.运行项目
+    cd my-project 
+    npm run start
