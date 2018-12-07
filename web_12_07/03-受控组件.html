@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.js"></script>
+    <script type="text/babel">
+        {/*受控组件：
+            表单元素设置 value/checked 属性，该属性的值由state 控制，给该元素添加 onChange事件，
+            以改变state 里的值，继而控制 value/checked 属性值。
+
+            (在给表单元素设置 value/checked 属性之后，用户在界面中已经不能改变该元素的value/checked值，
+            只能通过onChange 事件改变state 里对应的值之后，再渲染到界面)
+
+        */}
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state={
+                    isChecked:false,
+                    msg:'hello',
+                    arr:['111']
+                }
+            }
+            render(){
+                return (<div>
+                        <ul>{this.state.arr.map((el,i) => (<li key={i}>{el}</li>))}</ul>
+                        <p>{this.state.msg}</p>
+                        {/*以下两个 input 都是受控组件 */}
+                        <input type="checkbox" checked={this.state.isChecked} 
+                            onChange={e =>{this.setState({isChecked:e.target.checked})}}/>
+                        <input value={this.state.msg} onChange={(e)=>{this.setState({msg:e.target.value})}}/>
+                        <button onClick={this.add.bind(this)}>launch</button>
+                    </div>)
+            }
+            add(){
+                this.setState({
+                    arr:[
+                        ...this.state.arr,
+                        this.state.msg
+                    ]
+                })
+            }
+        }
+
+        ReactDOM.render(<App/>,document.getElementById('app'))
+    </script>
+</body>
+</html>

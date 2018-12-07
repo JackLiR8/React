@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件通信</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.js"></script>
+    <script type="text/babel">
+        class ParComp extends React.Component {
+            render(){
+                return (<div>
+                        <h1>{this.props.title}</h1>
+                        <hr/>
+                        <ChildComponent content="hello,component" 
+                        alert={()=> this.show(123)}/>  
+                    </div>)
+                    {/*组件内的函数都是定义在实例上，所以父组件传递父组件内的函数到子组件时，要用 this.fn */}
+            }
+            show(val) {
+                alert(val)
+            }
+        }
+        
+        class ChildComponent extends React.Component {
+            render(){
+                return (<div>
+                        <p>{this.props.content}</p>
+                        <button onClick={this.props.alert}>alert</button>
+                    </div>)
+            }
+        }
+        
+        const el = (<div><ParComp title="title"/></div>)
+        ReactDOM.render(el,document.getElementById('app'))
+
+        {/*
+        总结： 
+            通过实例上的 props 属性，父子组件之间可以传递任何形式的数据，包括 函数、节点。。。
+        */}
+    </script>
+</body>
+</html>

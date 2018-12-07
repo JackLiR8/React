@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0}
+        ul {list-style:none}
+        .finished {
+            background:yellow;
+            text-decoration-line: line-through
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.js"></script>
+    <script type="text/babel">
+         
+        class ToDoList extends React.Component{
+            constructor(props) {
+                super(props)
+                this.state={
+                    arr :[
+                        {
+                            assign:'reading news',
+                            isfinished:false
+                        },{
+                            assign:'work out',
+                            isfinished:true
+                        }
+                    ],
+                    new_thing:'play basketball'
+                }
+            } 
+            render(){
+                return (<div className="list">
+                    <h1>List</h1>
+                    <ul >
+                    {this.state.arr.map((e,i) => {
+                        return (<li key={i} className = {e.isfinished?"finished":""}>
+                            <input type="checkbox"
+                            checked = {e.isfinished}
+                            onChange = {this.finish.bind(this,i)}
+                            />{e.assign}<button>删除</button></li>)
+                    })}
+                    </ul>
+                    <h2>添加事件</h2>
+                    <input value={this.state.new_thing} onChange={e => this.setState({new_thing:e.target.value})}/>
+                    <button onClick={this.addThing.bind(this)}>添加</button>
+                </div>)
+            }
+            finish(i){
+                this.setState({
+                    arr:[
+                        ...this.state.arr.slice(0,i),
+                        {
+                            ...this.state.arr[i],
+                            isfinished:!this.state.arr[i].isfinished
+                        },
+                        ...this.state.arr.slice(i+1)
+                    ]
+                })
+            }
+
+           addThing(){
+               this.setState({
+                   arr:[
+                       ...this.state.arr,
+                       {
+                           assign:this.state.new_thing,
+                           isfinished:false
+                       }
+                   ]
+               })
+           }
+        }
+        
+        ReactDOM.render(<ToDoList/>,document.getElementById('root'))
+
+    </script>
+</body>
+</html>
