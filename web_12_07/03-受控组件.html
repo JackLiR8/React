@@ -44,7 +44,7 @@
             add(){
                 this.setState({
                     arr:[
-                        ...this.state.arr,
+                        ...this.state.arr.slice(),
                         this.state.msg
                     ]
                 })
