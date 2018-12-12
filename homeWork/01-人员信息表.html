@@ -81,7 +81,7 @@
             constructor(props) {
                 super(props)
                 this.state = {
-                    arr:[]
+                    infoArr:[]
                 }
             }
             render(){
@@ -96,6 +96,17 @@
                                 <td>操作</td>
                             </tr>   
                         </thead>
+                        <tbody>
+                            {
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button>删除</button>
+                                    <button>详情</button>    
+                                <td>
+                            </tr>
+                            }    
+                        </tbody>
                     </table>
                 )
             }

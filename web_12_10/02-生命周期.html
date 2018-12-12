@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>life circle</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../libs/react.development.js"></script>
+    <script src="../libs/react-dom.development.js"></script>
+    <script src="../libs/babel.js"></script>
+    <script type="text/babel">
+        /* 
+        Vue生命周期:
+            1)挂载阶段
+                new Vue() -->初始化钩子函数-->beforeCreate-->监听数据-->created
+                查找模版-->编译模版-->beforeMount-->挂载实例-->mounted
+
+            2）更新阶段
+                数据修改-->beforeUpdate-->更新真实DOM -->updated
+            3）销毁阶段
+                beforeDestroy-->销毁 -->destroyed
+
+        
+        React生命周期：
+            1）挂载阶段
+                调用构造函数实例化组件对象
+                        -->componentWillMount(组件即将挂载) 
+                        -->render(编译模版、比较虚拟DOM，渲染真实DOM) 
+                        -->componentDidMount
+            2）更新阶段
+                                forceUpdate(强制更新) --> componentWillUpdate -->render --> componentDidUpdate
+                            this.setState-->shouldComponentUpdate-⬆
+            父组件render-->componentWillReceiveProps-->👆
+
+            3)销毁阶段
+                  componentWillUnmount
+        */
+       class App extends React.Component {
+           constructor() {
+               
+           }
+       }
+    </script>
+</body>
+</html>
